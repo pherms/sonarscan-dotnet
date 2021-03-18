@@ -12,6 +12,9 @@ inputs:
   sonarOrganization:
     description: "The name of the SonarQube organization in SonarCloud. For hosted SonarQube, skip this setting."
     required: false
+  sonarGithubSha:
+    description: "Github sha method"
+    required: false
   dotnetBuildArguments:
     description: "Optional command arguments to 'dotnet build'"
     required: false
