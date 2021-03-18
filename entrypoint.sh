@@ -26,7 +26,6 @@ echo "INPUT_DOTNETTESTARGUMENTS: $INPUT_DOTNETTESTARGUMENTS"
 echo "INPUT_DOTNETDISABLETESTS: $INPUT_DOTNETDISABLETESTS"
 echo "INPUT_SONARBEGINARGUMENTS: $INPUT_SONARBEGINARGUMENTS"
 echo "INPUT_SONARHOSTNAME: $INPUT_SONARHOSTNAME"
-echo "INPUT_SONARGIHUBSHA: $INPUT_SONARGITHUBSHA"
 
 # Environment variables that need to be mapped in Github Action 
 #     env:
@@ -102,7 +101,7 @@ if [[ $GITHUB_EVENT_NAME == 'pull_request' ]]; then
     PR_NUMBER=$(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')
 
     # Add pull request specific parameters in sonar scanner
-    sonar_begin_cmd="$sonar_begin_cmd /d:sonar.pullrequest.key=$PR_NUMBER /d:sonar.pullrequest.branch=$GITHUB_HEAD_REF /d:sonar.pullrequest.base=$GITHUB_BASE_REF /d:sonar.pullrequest.github.repository=$GITHUB_REPOSITORY /d:sonar.pullrequest.provider=github /d:sonar.scm.revision=$INPUT_SONARGITHUBSHA"
+    sonar_begin_cmd="$sonar_begin_cmd /d:sonar.pullrequest.key=$PR_NUMBER /d:sonar.pullrequest.branch=$GITHUB_HEAD_REF /d:sonar.pullrequest.base=$GITHUB_BASE_REF /d:sonar.pullrequest.github.repository=$GITHUB_REPOSITORY /d:sonar.pullrequest.provider=github"
 
 fi
 
